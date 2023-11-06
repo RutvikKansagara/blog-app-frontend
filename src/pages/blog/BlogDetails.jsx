@@ -65,7 +65,7 @@ const BlogDetails = () => {
               <div className="flex items-center">
                 {blogDetailsById.user.pic && (
                   <img
-                    src={`https://blog-app-steel-pi.vercel.app/${blogDetailsById.user.pic}`}
+                    src={blogDetailsById.user.pic}
                     loading="lazy"
                     alt={blogDetailsById.user.username}
                     className="h-8 w-8 object-cover rounded-full"
