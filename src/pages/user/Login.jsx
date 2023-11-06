@@ -37,7 +37,7 @@ const Login = () => {
     
     if (loginSuccess) {
        
-      navigate("/register");
+      navigate("/blog/create");
     }
   }, [navigate,loginSuccess]);
   return (
