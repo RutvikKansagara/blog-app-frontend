@@ -32,7 +32,7 @@ const YourBlogs = () => {
   return (
     <>
       {loading && <Loader text="Loading ..." />}
-      {!loading && userBlogs && (
+      {!loading && userBlogs && userBlogs.length > 0 ? (
         <section className="bg-white dark:bg-gray-900">
           <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
             <div className="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
@@ -46,7 +46,14 @@ const YourBlogs = () => {
             <BlogList blogs={userAllBlogs} isYourBlogsPage={true} />
           </div>
         </section>
+      ): (
+        <div className="text-center mt-8">
+          <p className="text-xl font-semibold text-gray-700 dark:text-gray-300">
+            No blogs found.
+          </p>
+        </div>
       )}
+      
     </>
   );
 };
