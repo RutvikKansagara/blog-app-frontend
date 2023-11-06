@@ -17,7 +17,7 @@ const CreateBlog = () => {
   useEffect(() => {
     // If not authenticated, initiate login
     if (!isAuthenticated(userToken)) {
-      navigate("/login");
+      navigate("/all-blogs");
     }
   }, [navigate]);
   const dispatch = useDispatch();
