@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const BASE_URL = "http://127.0.0.1:5000/api/users";
+const BASE_URL = "https://blog-app-steel-pi.vercel.app/api/users";
 
 const makeRequest = async (url, method, data, config) => {
   try {
