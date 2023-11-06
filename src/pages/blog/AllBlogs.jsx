@@ -37,6 +37,11 @@ const AllBLogs = () => {
     }
   }, [dispatch]);
 
+  useEffect(()=>{
+    if(success){
+      console.log(allBlogs);
+    }
+  },[])
   return (
     <>
       {loading && <Loader text="Loading..." />}
