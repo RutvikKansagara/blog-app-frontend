@@ -9,17 +9,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { postBlog } from "../../features/blog/BlogAction";
 import { isAuthenticated } from "../../utils/authUtils";
 
-const userToken = localStorage.getItem("userToken");
+// const userToken = localStorage.getItem("userToken");
 // const userId = localStorage.getItem("userId");
 
 const CreateBlog = () => {
+  const { userToken } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   useEffect(() => {
     // If not authenticated, initiate login
     if (!isAuthenticated(userToken)) {
-      navigate("/all-blogs");
+      navigate("/login");
     }
-  }, [navigate]);
+  }, [navigate,userToken]);
   const dispatch = useDispatch();
 
   const [errors, setErrors] = useState();
@@ -36,11 +37,12 @@ const CreateBlog = () => {
     // If the field is a file input, handle it differently
     const { name, type, value } = e.target;
     if (type === "file") {
-      setFormData({ ...formData, [name]: e.target.files[0] });
+      setFormData((prevFormData) => ({ ...prevFormData, [name]: e.target.files[0] }));
     } else if (type === "text" && name === "title") {
       setFormData({ ...formData, [name]: value });
     }
   };
+  
 
   const handleCkEditorChange = (e, editor) => {
     const content = editor.getData();
@@ -48,7 +50,7 @@ const CreateBlog = () => {
   };
 
   useEffect(() => {
-    if (success) navigate("/login");
+    if (success) navigate("/all-blogs");
   }, [navigate, success]);
 
   const handleSubmit = (e) => {

@@ -7,17 +7,18 @@ import { userBlogs } from "../../features/blog/BlogAction";
 import BlogList from "../../components/blog/BlogList";
 import { isAuthenticated } from "../../utils/authUtils";
 
-const userToken = localStorage.getItem("userToken");
 // const userId = localStorage.getItem("userId");
 
+
 const YourBlogs = () => {
+  const { userToken } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   useEffect(() => {
     // If not authenticated, initiate login
     if (!isAuthenticated(userToken)) {
       navigate("/login");
     }
-  }, [navigate]);
+  }, [navigate,userToken]);
   const dispatch = useDispatch();
   const { loading, error, success, userAllBlogs } = useSelector(
     (state) => state.blog

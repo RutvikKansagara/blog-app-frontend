@@ -5,16 +5,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/user/UserAction";
 const links = [
-  { id: 2, text: "Create Blog", to: "/blog/create" },
-  { id: 3, text: "your blogs", to: "/your-blogs" },
-  { id: 4, text: "all blogs", to: "/all-blogs" },
-  { id: 5, text: "Logout" },
+  { id: 1, text: "Create Blog", to: "/blog/create" },
+  { id: 2, text: "your blogs", to: "/your-blogs" },
+  { id: 3, text: "all blogs", to: "/all-blogs" },
 ];
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { logoutSuccess } = useSelector((state) => state.user);
+  const {userToken} = useSelector((state)=>state.auth);
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const onMenuToggle = () => {
@@ -54,13 +54,15 @@ const Header = () => {
                   key={link.id}
                   className="relative max-w-fit pr-3 md:pr-0 py-1 after:bg-gradient-to-r from-[#2b68e0] to-[#e710ea]  after:absolute after:h-1 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300"
                 >
-                  {link.text === "Logout" ? (
-                    <Link onClick={handleLogout}>{link.text}</Link>
-                  ) : (
+                  
+                  
                     <Link to={link.to}>{link.text}</Link>
-                  )}
+                  
                 </li>
               ))}
+              
+              <button onClick={handleLogout} className="cursor-pointer">Logout</button>
+               
               <SearchBar />
             </ul>
           </div>

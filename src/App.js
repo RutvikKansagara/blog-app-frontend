@@ -3,7 +3,7 @@ import './App.css';
 import Login from "./pages/user/Login";
 import Signup from './pages/user/Signup';
 import Header from './components/Header';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import UpdateProfile from "./pages/user/UpdateProfile";
 import CreateBlog from './pages/blog/CreateBlog';
 import EditBlog from './pages/blog/EditBlog';
@@ -18,10 +18,13 @@ import SearchResults from './pages/blog/SearchResults';
 
 
 function App() {
+  // const location = useLocation();
+  const isLoginOrRegisterRoute = window.location.pathname === "/login" || window.location.pathname === "/register";
+
   return (
     <>
     <Router>
-       <Header/>
+    {!isLoginOrRegisterRoute && <Header />}
        <Routes>
         
         <Route exact path="/" element={<Login/>}></Route>

@@ -6,10 +6,11 @@ import Loader from "../../components/Loader";
 import parse from "html-react-parser";
 import { isAuthenticated } from "../../utils/authUtils";
 
-const userToken = localStorage.getItem("userToken");
+// const userToken = localStorage.getItem("userToken");
 // const userId = localStorage.getItem("userId");
 
 const BlogDetails = () => {
+  const { userToken } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   useEffect(() => {
     // If not authenticated, initiate login

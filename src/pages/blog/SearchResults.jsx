@@ -6,18 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { searchBlogs } from "../../features/blog/BlogAction";
 import { isAuthenticated } from "../../utils/authUtils";
 
-const userToken = localStorage.getItem("userToken");
+// const userToken = localStorage.getItem("userToken");
 // const userId = localStorage.getItem("userId");
 
 const MAX_CONTENT_LENGTH = 100;
 const SearchResults = () => {
+  const { userToken } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   useEffect(() => {
     // If not authenticated, initiate login
     if (!isAuthenticated(userToken)) {
       navigate("/login");
     }
-  }, [navigate]);
+  }, [navigate,userToken]);
 
   const dispatch = useDispatch();
   const { loading, error, success, searchresults } = useSelector(

@@ -12,16 +12,17 @@ import {
   updateBlogDetails,
 } from "../../features/blog/BlogAction";
 import { isAuthenticated } from "../../utils/authUtils";
-const userToken = localStorage.getItem("userToken");
+// const userToken = localStorage.getItem("userToken");
 // const userId = localStorage.getItem("userId");
 const EditBlog = () => {
+  const { userToken } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   useEffect(() => {
     // If not authenticated, initiate login
     if (!isAuthenticated(userToken)) {
       navigate("/login");
     }
-  }, [navigate]);
+  }, [navigate,userToken]);
   const dispatch = useDispatch();
   const { loading,  error,success, blogsuccess,blogupdatesuccess,blogDetailsById,blogUser,blogImageUrl } = useSelector(
     (state) => state.blog
