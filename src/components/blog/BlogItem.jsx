@@ -44,7 +44,7 @@ const BlogItem = ({
           )}
         </div>
         <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          <a href="/">{title}</a>
+          <Link to={`/your-blogs/blog/${blogId}`}>{title}</Link>
         </h2>
         <div className="mb-5 font-light text-gray-500 dark:text-gray-400">
           {truncatedContent}

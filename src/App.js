@@ -19,7 +19,7 @@ import SearchResults from './pages/blog/SearchResults';
 
 function App() {
   // const location = useLocation();
-  const isLoginOrRegisterRoute = window.location.pathname === "/login" || window.location.pathname === "/register";
+  const isLoginOrRegisterRoute = window.location.pathname === "/login" || window.location.pathname === "/register" || window.location.pathname === "/";
 
   return (
     <>
